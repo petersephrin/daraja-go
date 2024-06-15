@@ -101,13 +101,13 @@ type CallbackResponse struct {
 // and returns a LipaNaMpesaResponse struct representing the response from the Lipa Na Mpesa API,
 // or an ErrorResponse struct representing an error that occurred during the request.
 func (d *DarajaApi) MakeSTKPushRequest(mpesaConfig LipaNaMpesaPayload) (*LipaNaMpesaResponse, *ErrorResponse) {
-	//timestamp
-	t := time.Now()
-	layout := "20060102150405"
-	timestamp := t.Format(layout)
+	// //timestamp
+	// t := time.Now()
+	// layout := "20060102150405"
+	// timestamp := t.Format(layout)
 
 	// marshal the struct into a map
-	password := base64.StdEncoding.EncodeToString([]byte(mpesaConfig.BusinessShortCode + mpesaConfig.Password + timestamp))
+	password := base64.StdEncoding.EncodeToString([]byte(mpesaConfig.BusinessShortCode + mpesaConfig.Password + mpesaConfig.Timestamp))
 
 	// add the timestamp and password to the map
 
